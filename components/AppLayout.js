@@ -1,10 +1,21 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { MainLayoutStyles, SubLayoutStyles } from './AppLayoutStyles';
+import { Global } from "@emotion/react";
+import GlobalStyles from '../GlobalStyles';
+// const MainLayoutStyles = styled.div`
+//     & {
+//         border: 1px solid red;
+//     }
+// `;
+
+
+
 
 const AppLayout = ({ pageType, children }) => {
     return (
         <>
+            <Global styles={GlobalStyles} />
             {
                 pageType === 'main' ?
                     <MainLayoutStyles>
