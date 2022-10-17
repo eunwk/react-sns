@@ -1,26 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import 'antd/dist/antd.css';
-import wrapper from '../store/configureStore';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Global } from "@emotion/react";
+import GlobalStyles from '../GlobalStyles';
+// import wrapper from '../store/configureStore';
+import Header from "../components/frames/Header";
 
-const SNSApp = ({ Component }) => (
+const App = ({ Component }) => (
   <>
     <Head>
       <meta charSet="utf-8" />
       <title>SNSApp</title>
     </Head>
-    <Component />
+    <Global styles={GlobalStyles} />
+    <div className="app-container">
+      <Header />
+      <Component />
+    </div>
   </>
 );
 
-SNSApp.propTypes = {
+App.propTypes = {
   Component: PropTypes.elementType.isRequired,
 };
 
-export function reportWebVitals(metric) {
-  console.log(metric);
-}
+// export function reportWebVitals(metric) {
+//   console.log(metric);
+// }
 
-export default wrapper.withRedux(SNSApp);
+export default App;
+//export default wrapper.withRedux(SNSApp);
 
