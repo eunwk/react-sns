@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import PropTypes from "prop-types";
+import Head from "next/head";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Global } from "@emotion/react";
-import GlobalStyles from '../GlobalStyles';
+import GlobalStyles from "../GlobalStyles";
 // import wrapper from '../store/configureStore';
 import Header from "../components/frames/Header";
+import Footer from "../components/frames/Footer";
 
 const App = ({ Component }) => (
   <>
@@ -17,6 +18,7 @@ const App = ({ Component }) => (
     <div className="app-container">
       <Header />
       <Component />
+      <Footer />
     </div>
   </>
 );
@@ -31,4 +33,3 @@ App.propTypes = {
 
 export default App;
 //export default wrapper.withRedux(SNSApp);
-

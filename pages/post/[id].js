@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 // import Link from 'next/link';
 // import Tab from 'react-bootstrap/Tab';
 // import Tabs from 'react-bootstrap/Tabs';
-import SubPageLayout from '../../components/layouts/SubPageLayout';
+import SubPageLayout from '../../components/pageLayouts/SubPageLayout';
 
 const Post = () => {
 

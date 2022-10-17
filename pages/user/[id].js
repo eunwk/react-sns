@@ -4,9 +4,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import UserProfileCard from '../../components/userProfile/UserProfileCard';
+import UserProfileCard from '../../components/UserProfile';
 
-import SubPageLayout from '../../components/layouts/SubPageLayout';
+import SubPageLayout from '../../components/pageLayouts/SubPageLayout';
 
 const User = () => {
 

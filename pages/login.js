@@ -1,13 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Head from 'next/head';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Link from 'next/link';
-import MainPageLayout from '../components/layouts/MainPageLayout';
-
-
+import MainPageLayout from '../components/pageLayouts/MainPageLayout';
 
 const Login = () => {
+ 
     return (
         <MainPageLayout>
             <Head>
