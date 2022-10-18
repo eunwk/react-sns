@@ -4,6 +4,7 @@ import Head from "next/head";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Global } from "@emotion/react";
 import GlobalStyles from "../GlobalStyles";
+import "antd/dist/antd.css";
 // import wrapper from '../store/configureStore';
 import Header from "../components/frames/Header";
 import Footer from "../components/frames/Footer";

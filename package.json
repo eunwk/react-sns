@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/eunwk/react-sns",
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "antd": "^4.23.6",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.2",
     "immer": "^9.0.15",

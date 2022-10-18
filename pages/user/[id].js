@@ -1,17 +1,19 @@
 // 특정 사용자의 게시글 목록 (index 페이지와 거의 동일)
-import React, { useEffect } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import UserProfileCard from '../../components/UserProfile';
+import React, { useEffect } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import UserProfileCard from "../../components/UserProfile";
 
-import SubPageLayout from '../../components/pageLayouts/SubPageLayout';
+import SubPageLayout from "../../components/pageLayouts/SubPageLayout";
 
 const User = () => {
-
   return (
     <SubPageLayout>
+      <Head>
+        <title>홍길동 | 커뮤니티 이름</title>
+      </Head>
       <UserProfileCard />
       <Tabs
         defaultActiveKey="profile"
@@ -21,7 +23,12 @@ const User = () => {
         <Tab eventKey="about" title="About">
           <div>
             <p>Bio</p>
-            <p>Aditya Oberai is a Developer Advocate at Appwrite and an avid tech community and hackathon enthusiast. Having worked with various technologies such as .NET, Microsoft Azure, etc., he has spent the last 3 years empowering tech communities.</p>
+            <p>
+              Aditya Oberai is a Developer Advocate at Appwrite and an avid tech
+              community and hackathon enthusiast. Having worked with various
+              technologies such as .NET, Microsoft Azure, etc., he has spent the
+              last 3 years empowering tech communities.
+            </p>
           </div>
         </Tab>
         <Tab eventKey="history" title="History">

@@ -19,6 +19,14 @@ const GlobalStyles = css`
   p {
     margin-bottom: 0;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${color.fontNormal};
+  }
   ul,
   li {
     list-style: none;
@@ -43,6 +51,10 @@ const GlobalStyles = css`
     padding: 0 15px 20px;
     margin: 0 auto;
     border: 1px solid red;
+  }
+
+  .ant-form {
+    color: ${color.fontNormal};
   }
 `;
 
