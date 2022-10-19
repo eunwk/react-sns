@@ -1,38 +1,86 @@
-import produce from 'immer';
-
 export const initialState = {
-    loadMyInfoLoading: false,// 나의 정보 
-    loadMyInfoDone: false,
-    loadMyInfoError: null,
-}
+  isLoggedIn: false,
+  user: null,
+  signUpData: {},
+  loginData: {},
+};
 
+const dummyUser = {
+  id: 1,
+  nickname: "제로초",
+  Posts: [],
+  Followings: [],
+  Followers: [],
+};
 
-export const LOG_IN_REQUEST = 'LOG_IN_REQUEST';
-export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
-export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
+export const SIGN_UP = "SIGN_UP";
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+export const LOG_IN = "LOG_IN"; // 액션의 이름
+export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS"; // 액션의 이름
+export const LOG_IN_FAILURE = "LOG_IN_FAILURE"; // 액션의 이름
+export const LOG_OUT = "LOG_OUT";
 
+// export const signUpAction = (data) => {
+//   return {
+//     type: SIGN_UP,
+//     data,
+//   };
+// };
 
+// export const signUpSuccess = {
+//   type: SIGN_UP_SUCCESS,
+// };
+
+// 액션생성자함수
+export const loginAction = (data) => {
+  return {
+    type: LOG_IN,
+    data,
+  };
+};
+
+export const logoutAction = (data) => {
+  return {
+    type: LOG_OUT,
+    data,
+  };
+};
+// export const signUp = (data) => {
+//   return {
+//     type: SIGN_UP,
+//     data,
+//   };
+// };
 
 const reducer = (state = initialState, action) => {
-    return produce(state, (draft) => {
-        switch (action.type) {
-            case LOG_IN_REQUEST:
-                draft.loginLoading = true;
-                draft.loginError = null;
-                draft.loginDone = false;
-                break;
-            case LOG_IN_SUCCESS:
-                draft.loginLoading = false;
-                draft.loginDone = true;
-                draft.me = action.data;
-                break;
-            case LOG_IN_FAILURE:
-                draft.loginLoading = false;
-                draft.loginError = action.error;
-                break;
-            default:
-                break;
-        }
-    });
-}
+  switch (action.type) {
+    case LOG_IN: {
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: dummyUser,
+        loginData: action.data,
+      };
+    }
+    case LOG_OUT: {
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: null,
+      };
+    }
+    // case SIGN_UP: {
+    //   return {
+    //     ...state,
+    //     signUpData: action.data,
+    //   };
+    // }
+    default: {
+      return {
+        ...state,
+      };
+    }
+  }
+};
+
 export default reducer;

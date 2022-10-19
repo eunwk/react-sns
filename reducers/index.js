@@ -1,9 +1,8 @@
-import { HYDRATE } from 'next-redux-wrapper';
-import { combineReducers } from 'redux';
+import { HYDRATE } from "next-redux-wrapper";
+import { combineReducers } from "redux";
 
-import user from './user';
-import post from './post';
-
+import user from "./user";
+import post from "./post";
 
 // store.dispatch(changeName('eunwk'));
 
@@ -12,7 +11,7 @@ import post from './post';
 //     switch (action.type) {
 //         case HYDRATE:
 //             console.log('HYDRATE', HYDRATE);
-//             //HYDRATE는 action 
+//             //HYDRATE는 action
 //             return { ...state, ...action.payload }
 //         // case 'LOG_IN':
 //         //     return {
@@ -23,34 +22,25 @@ import post from './post';
 //         //             user: action.data,
 //         //         }
 //         //     }
-//         // case 'LOG_OUT':
-//         //     return {
-//         //         ...state,
-//         //         user: {
-//         //             ...state.user,
-//         //             isLoggedIn: false,
-//         //             user: null,
-//         //         }
-//         //     }
 //         default:
 //             return state;
 //     }
 // };
 
 const rootReducer = combineReducers({
-    // index 리듀서는 HYDRATE를 사용하기 위해 추가한 것임.
-    index: (state = {}, action) => {
-        switch (action.type) {
-            case HYDRATE:
-                console.log('HYDRATE', HYDRATE);
-                //HYDRATE는 action 
-                return { ...state, ...action.payload }
-            default:
-                return state;
-        }
-    },
-    user,
-    post,
+  // index 리듀서는 HYDRATE를 사용하기 위해 추가한 것임.
+  index: (state = {}, action) => {
+    switch (action.type) {
+      case HYDRATE:
+        console.log("HYDRATE", HYDRATE);
+        //HYDRATE는 action
+        return { ...state, ...action.payload };
+      default:
+        return state;
+    }
+  },
+  user,
+  post,
 });
 
 export default rootReducer;

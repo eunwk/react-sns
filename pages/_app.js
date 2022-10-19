@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Global } from "@emotion/react";
 import GlobalStyles from "../GlobalStyles";
 import "antd/dist/antd.css";
-// import wrapper from '../store/configureStore';
+import wrapper from "../store/configureStore";
 import Header from "../components/frames/Header";
 import Footer from "../components/frames/Footer";
 
@@ -32,5 +32,5 @@ App.propTypes = {
 //   console.log(metric);
 // }
 
-export default App;
-//export default wrapper.withRedux(SNSApp);
+// export default App;
+export default wrapper.withRedux(App);
