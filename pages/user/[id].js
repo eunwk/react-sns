@@ -4,11 +4,24 @@ import Head from "next/head";
 import Link from "next/link";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import { useSelector, useDispatch } from "react-redux";
 import UserProfileCard from "../../components/UserProfile";
-
+import FollowList from "../../components/molecule/FollowList";
 import SubPageLayout from "../../components/pageLayouts/SubPageLayout";
 
+// const followerList = [
+//   { nickname: "제로초" },
+//   { nickname: "바보" },
+//   { nickname: "노드버드오피셜" },
+// ];
+// const followingList = [
+//   { nickname: "제로초" },
+//   { nickname: "바보" },
+//   { nickname: "노드버드오피셜" },
+// ];
+
 const User = () => {
+  const { me } = useSelector((state) => state.user);
   return (
     <SubPageLayout>
       <Head>
@@ -35,10 +48,22 @@ const User = () => {
           <div>History</div>
         </Tab>
         <Tab eventKey="following" title="Following">
-          <div>텝페이지3</div>
+          <div>
+            {me ? (
+              <FollowList header="팔로잉 목록" data={me.Followings} />
+            ) : (
+              <div>팔로잉 목록이 없습니다.</div>
+            )}
+          </div>
         </Tab>
         <Tab eventKey="follower" title="Follower">
-          <div>텝페이지3</div>
+          <div>
+            {me ? (
+              <FollowList header="팔로워 목록" data={me.Followers} />
+            ) : (
+              <div>팔로워가 없습니다.</div>
+            )}
+          </div>
         </Tab>
         <Tab eventKey="account" title="Account">
           <div>나의정보</div>

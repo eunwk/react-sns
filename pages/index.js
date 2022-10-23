@@ -15,10 +15,10 @@ export const generateDummyPost = (number) =>
       id: shortId.generate(),
       User: {
         id: shortId.generate(),
-        nickname: faker.name.findName(),
+        nickname: faker.name.fullName(),
       },
-      title: faker.lorem.sentence(5),
-      content: faker.lorem.lines(3),
+      title: faker.lorem.sentence(4),
+      content: faker.lorem.lines(2),
       Images: [
         {
           src: faker.image.image(),
@@ -42,7 +42,7 @@ export const generateNotice = (number) =>
     }));
 
 const Home = () => {
-  const posts1 = generateDummyPost(3);
+  const posts1 = generateDummyPost(4);
   const posts2 = generateDummyPost(12);
   const notices = generateNotice(5);
 

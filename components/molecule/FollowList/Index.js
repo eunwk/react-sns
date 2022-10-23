@@ -4,24 +4,27 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 
-const FollowList = ({ header, data }) => (
-  <List
-    style={{ marginBottom: 20 }}
-    grid={{ gutter: 4, xs: 2, md: 3 }}
-    size="small"
-    header={<div>{header}</div>}
-    loadMore={<Button>더 보기</Button>}
-    bordered
-    dataSource={data}
-    renderItem={(item) => (
-      <List.Item>
-        <Card actions={[<StopOutlined key="stop" />]}>
-          <Card.Meta description={item.nickname} />
-        </Card>
-      </List.Item>
-    )}
-  />
-);
+const FollowList = ({ header, data }) => {
+  // if (!data) <div>아무것도 없습니다. </div>;
+  return (
+    <List
+      style={{ marginBottom: 20 }}
+      grid={{ gutter: 4, xs: 2, md: 3 }}
+      size="small"
+      header={<div>{header}</div>}
+      loadMore={<Button>더 보기</Button>}
+      bordered
+      dataSource={data}
+      renderItem={(item) => (
+        <List.Item>
+          <Card actions={[<StopOutlined key="stop" />]}>
+            <Card.Meta description={item.nickname} />
+          </Card>
+        </List.Item>
+      )}
+    />
+  );
+};
 
 FollowList.propTypes = {
   header: PropTypes.string.isRequired,

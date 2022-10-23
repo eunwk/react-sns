@@ -26,7 +26,7 @@ const NoticeList = ({ notices }) => {
         onSwiper={(swiper) => console.log(swiper)}
       >
         {notices.map((v) => (
-          <SwiperSlide>
+          <SwiperSlide key={v.id}>
             <Link href="#">
               <a>
                 <div className="txts">

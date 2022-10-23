@@ -1,23 +1,12 @@
 import React, { useCallback } from "react";
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import Avatar from "react-avatar";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import FollowList from "../molecule/FollowList";
-
-const followerList = [
-  { nickname: "제로초" },
-  { nickname: "바보" },
-  { nickname: "노드버드오피셜" },
-];
-const followingList = [
-  { nickname: "제로초" },
-  { nickname: "바보" },
-  { nickname: "노드버드오피셜" },
-];
 
 const UserProfile = () => {
+  const { me } = useSelector((state) => state.user);
   const onSubmit = useCallback(() => {
     console.log("UserProfile onSubmit");
   }, []);
@@ -34,9 +23,9 @@ const UserProfile = () => {
           수정
         </Button>
       </Form>
-
-      <FollowList header="팔로잉 목록" data={followingList} />
-      <FollowList header="팔로워 목록" data={followerList} />
+      <div>게시글 {me?.Posts.length}</div>
+      <div>팔로잉 {me?.Followings.length}</div>
+      <div>팔로워 {me?.Followers.length}</div>
     </div>
   );
 };

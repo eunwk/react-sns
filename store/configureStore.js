@@ -6,6 +6,7 @@ import createSagaMiddleware from "redux-saga";
 import reducer from "../reducers";
 import rootSaga from "../sagas";
 
+// 액션이 dispatch 될때 action 정보를 출력해 주는 미들 웨어
 const loggerMiddleware =
   ({ dispatch, getState }) =>
   (next) =>

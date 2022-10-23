@@ -12,7 +12,7 @@ import Styles from "./Styles";
 import Search from "../../molecule/Search";
 
 const PostGroup = ({ title, posts, shwoCategory, showSearch }) => {
-  console.log("posts", posts);
+  // console.log("posts", posts);
   return (
     <Styles>
       <div className="tit-area">
@@ -34,7 +34,7 @@ const PostGroup = ({ title, posts, shwoCategory, showSearch }) => {
 
       <div className="list-area">
         {posts.map((v) => (
-          <Card>
+          <Card key={v.id}>
             <Card.Img variant="top" src={v.Images[0].src} />
             <Card.Body>
               <Card.Title>{v.title}</Card.Title>

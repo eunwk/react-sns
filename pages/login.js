@@ -7,25 +7,25 @@ import { Form, Input, Button } from "antd";
 import Link from "next/link";
 import MainPageLayout from "../components/pageLayouts/MainPageLayout";
 import useInput from "../hooks/useInput";
-import { loginAction } from "../reducers/user";
+import { loginRequestAction } from "../reducers/user";
 import Router from "next/router";
 
 const Login = () => {
   const dispatch = useDispatch();
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
-  const { isLoggedIn } = useSelector((state) => state.user);
+  const { logInLoading, logInDone } = useSelector((state) => state.user);
 
   const onSubmitForm = useCallback(() => {
     console.log("onSubmitForm");
-    dispatch(loginAction({ email, password }));
+    dispatch(loginRequestAction({ email, password }));
   }, [email, password]);
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (logInDone) {
       Router.replace("/");
     }
-  }, [isLoggedIn]);
+  }, [logInDone]);
 
   return (
     <MainPageLayout>
@@ -79,7 +79,7 @@ const Login = () => {
           />
         </div>
         <div>
-          <Button type="primary" htmlType="submit" loading={false}>
+          <Button type="primary" htmlType="submit" loading={logInLoading}>
             로그인
           </Button>
         </div>

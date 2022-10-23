@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import Head from "next/head";
+import { useSelector, useDispatch } from "react-redux";
 // import Button from 'react-bootstrap/Button';
 // import Form from 'react-bootstrap/Form';
 import { Form, Input, Checkbox, Button } from "antd";
@@ -7,8 +8,11 @@ import Link from "next/link";
 import MainPageLayout from "../components/pageLayouts/MainPageLayout";
 import useInput from "../hooks/useInput";
 // import SubPageLayout from '../components/layouts/SubPageLayout';
+import { SIGN_UP_REQUEST } from "../reducers/user";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const { signUpLoading } = useSelector((state) => state.user);
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
   const [nickname, onChangeNickname] = useInput("");
@@ -42,10 +46,10 @@ const SignUp = () => {
       return setTermError(true);
     }
     console.log(email, nickname, password);
-    // dispatch({
-    //   type: SIGN_UP_REQUEST,
-    //   data: { email, nickname, password },
-    // });
+    dispatch({
+      type: SIGN_UP_REQUEST,
+      data: { email, nickname, password },
+    });
   }, [email, password, passwordCheck, term]);
 
   return (
@@ -125,7 +129,7 @@ const SignUp = () => {
           )}
         </div>
         <div>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={signUpLoading}>
             가입
           </Button>
         </div>
