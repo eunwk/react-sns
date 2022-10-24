@@ -17,43 +17,32 @@ export const initialState = {
   loginData: {},
   me: null,
   userInfo: null,
-
-  // loadMyInfoLoading: false, // 유저 정보 가져오기 시도중
-  // loadMyInfoDone: false,
-  // loadMyInfoError: null,
-  // loadUserLoading: false, // 유저 정보 가져오기 시도중
-  // loadUserDone: false,
-  // loadUserError: null,
-  // followLoading: false, // 팔로우 시도중
-  // followDone: false,
-  // followError: null,
-  // unfollowLoading: false, // 언팔로우 시도중
-  // unfollowDone: false,
-  // unfollowError: null,
-
-  // changeNicknameLoading: false, // 닉네임 변경 시도중
-  // changeNicknameDone: false,
-  // changeNicknameError: null,
-  // loadFollowingsLoading: false,
-  // loadFollowingsDone: false,
-  // loadFollowingsError: null,
-  // loadFollowersLoading: false,
-  // loadFollowersDone: false,
-  // loadFollowersError: null,
-  // removeFollowerLoading: false,
-  // removeFollowerDone: false,
-  // removeFollowerError: null,
-  //
 };
+// loadMyInfoLoading: false, // 유저 정보 가져오기 시도중
+// loadMyInfoDone: false,
+// loadMyInfoError: null,
+// loadUserLoading: false, // 유저 정보 가져오기 시도중
+// loadUserDone: false,
+// loadUserError: null,
+// followLoading: false, // 팔로우 시도중
+// followDone: false,
+// followError: null,
+// unfollowLoading: false, // 언팔로우 시도중
+// unfollowDone: false,
+// unfollowError: null,
 
-const dummyUser = (data) => ({
-  ...data,
-  id: 1,
-  nickname: "제로초",
-  Posts: [],
-  Followings: [],
-  Followers: [],
-});
+// changeNicknameLoading: false, // 닉네임 변경 시도중
+// changeNicknameDone: false,
+// changeNicknameError: null,
+// loadFollowingsLoading: false,
+// loadFollowingsDone: false,
+// loadFollowingsError: null,
+// loadFollowersLoading: false,
+// loadFollowersDone: false,
+// loadFollowersError: null,
+// removeFollowerLoading: false,
+// removeFollowerDone: false,
+// removeFollowerError: null,
 
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
@@ -117,6 +106,23 @@ export const logoutRequestAction = (data) => {
     data,
   };
 };
+
+const dummyUser = (data) => ({
+  ...data,
+  nickname: "제로초",
+  id: 1,
+  Posts: [{ id: 1 }],
+  Followings: [
+    { nickname: "부기초" },
+    { nickname: "Chanho Lee" },
+    { nickname: "neue zeal" },
+  ],
+  Followers: [
+    { nickname: "부기초" },
+    { nickname: "Chanho Lee" },
+    { nickname: "neue zeal" },
+  ],
+});
 
 const reducer = (state = initialState, action) =>
   produce(state, (draft) => {

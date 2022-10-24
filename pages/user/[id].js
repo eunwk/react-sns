@@ -65,9 +65,11 @@ const User = () => {
             )}
           </div>
         </Tab>
-        <Tab eventKey="account" title="Account">
-          <div>나의정보</div>
-        </Tab>
+        {me && (
+          <Tab eventKey="account" title="Account">
+            <div>나의정보</div>
+          </Tab>
+        )}
       </Tabs>
     </SubPageLayout>
   );

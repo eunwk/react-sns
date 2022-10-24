@@ -1,4 +1,6 @@
 import produce from "immer";
+import shortId from "shortid";
+import { faker } from "@faker-js/faker";
 
 export const initialState = {
   addPostLoading: false,
@@ -13,41 +15,7 @@ export const initialState = {
   addCommentLoading: false,
   addCommentDone: false,
   addCommentError: null,
-  mainPosts: [
-    {
-      id: 1,
-      User: {
-        id: 1,
-        nickname: "제로초",
-      },
-      content: "첫 번째 게시글",
-      Images: [
-        {
-          src: "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
-        },
-        {
-          src: "https://gimg.gilbut.co.kr/book/BN001958/rn_view_BN001958.jpg",
-        },
-        {
-          src: "https://gimg.gilbut.co.kr/book/BN001998/rn_view_BN001998.jpg",
-        },
-      ],
-      Comments: [
-        {
-          User: {
-            nickname: "nero",
-          },
-          content: "우와 개정판이 나왔군요~",
-        },
-        {
-          User: {
-            nickname: "hero",
-          },
-          content: "얼른 사고싶어요~",
-        },
-      ],
-    },
-  ],
+  mainPosts: [],
   imagePaths: [],
   // singlePost: null,
   // imagePaths: [],
@@ -72,6 +40,32 @@ export const initialState = {
   // retweetDone: false,
   // retweetError: null,
 };
+initialState.mainPosts = initialState.mainPosts.concat(
+  Array(4)
+    .fill()
+    .map(() => ({
+      id: shortId.generate(),
+      User: {
+        id: shortId.generate(),
+        nickname: faker.name.fullName(),
+      },
+      content: faker.lorem.paragraph(),
+      Images: [
+        {
+          src: faker.image.image(),
+        },
+      ],
+      Comments: [
+        {
+          User: {
+            id: shortId.generate(),
+            nickname: faker.name.fullName(),
+          },
+          content: faker.lorem.sentence(), // 한문장
+        },
+      ],
+    }))
+);
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
 export const ADD_POST_SUCCESS = "ADD_POST_SUCCESS";
@@ -133,7 +127,7 @@ export const addComment = (data) => ({
   data,
 });
 
-const dummyPost = {
+const dummyPost = () => ({
   id: 2,
   content: "더미데이터입니다.",
   User: {
@@ -142,7 +136,7 @@ const dummyPost = {
   },
   Images: [],
   Comments: [],
-};
+});
 
 // 이전 상태를 액션을 통해 다음 상태로 만들어내는 함수(불변성은 지키면서)
 const reducer = (state = initialState, action) =>
