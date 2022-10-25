@@ -10,6 +10,9 @@ import {
 } from "redux-saga/effects";
 
 import {
+  LOAD_POSTS_REQUEST,
+  LOAD_POSTS_SUCCESS,
+  LOAD_POSTS_FAILURE,
   ADD_POST_FAILURE,
   ADD_POST_REQUEST,
   ADD_POST_SUCCESS,
@@ -22,6 +25,7 @@ import {
   ADD_COMMENT_FAILURE,
   ADD_COMMENT_REQUEST,
   ADD_COMMENT_SUCCESS,
+  generateDummyPost,
 } from "../reducers/post";
 
 // LIKE_POST_FAILURE,
@@ -34,9 +38,7 @@ import {
 // LOAD_POST_REQUEST,
 // LOAD_POST_SUCCESS,
 // LOAD_POSTS_FAILURE,
-// LOAD_POSTS_REQUEST,
-// LOAD_POSTS_SUCCESS,
-// LOAD_USER_POSTS_FAILURE,
+
 // LOAD_USER_POSTS_REQUEST,
 // LOAD_USER_POSTS_SUCCESS,
 
@@ -52,6 +54,28 @@ import {
 // UPLOAD_IMAGES_SUCCESS,
 //
 import { ADD_POST_TO_ME, REMOVE_POST_OF_ME } from "../reducers/user";
+
+function loadPostsAPI(lastId) {
+  return axios.get(`/posts?lastId=${lastId || 0}`);
+}
+
+function* loadPosts(action) {
+  try {
+    //  const result = yield call(loadPostsAPI, action.lastId);
+    yield delay(1000);
+    yield put({
+      type: LOAD_POSTS_SUCCESS,
+      // data: action.data,
+      data: generateDummyPost(10),
+    });
+  } catch (err) {
+    console.error(err);
+    yield put({
+      type: LOAD_POSTS_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
 
 function addPostAPI(data) {
   return axios.post("/post", data);
@@ -286,25 +310,9 @@ function* addComment(action) {
 //   }
 // }
 
-// function loadPostsAPI(lastId) {
-//   return axios.get(`/posts?lastId=${lastId || 0}`);
-// }
-
-// function* loadPosts(action) {
-//   try {
-//     const result = yield call(loadPostsAPI, action.lastId);
-//     yield put({
-//       type: LOAD_POSTS_SUCCESS,
-//       data: result.data,
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     yield put({
-//       type: LOAD_POSTS_FAILURE,
-//       error: err.response.data,
-//     });
-//   }
-// }
+function* watchLoadPosts() {
+  yield throttle(5000, LOAD_POSTS_REQUEST, loadPosts);
+}
 
 function* watchAddPost() {
   yield takeLatest(ADD_POST_REQUEST, addPost);
@@ -350,10 +358,6 @@ function* watchAddComment() {
 //   yield throttle(5000, LOAD_USER_POSTS_REQUEST, loadUserPosts);
 // }
 
-// function* watchLoadPosts() {
-//   yield throttle(5000, LOAD_POSTS_REQUEST, loadPosts);
-// }
-
 // 비동기 액션들을 넣어 준다.
 // fork 비동기 함수 실행.  call 동기 함수 실행
 // all 모두.
@@ -363,6 +367,7 @@ function* watchAddComment() {
 // 후에 LOG_IN_REQUEST 액션이 실행 되면 뒤의 함수를 호출.
 export default function* postSaga() {
   yield all([
+    fork(watchLoadPosts),
     fork(watchAddPost),
     fork(watchRemovePost),
     fork(watchUpdatePost),
@@ -375,6 +380,5 @@ export default function* postSaga() {
     // fork(watchLoadPost),
     // fork(watchLoadUserPosts),
     // fork(watchLoadHashtagPosts),
-    // fork(watchLoadPosts),
   ]);
 }
