@@ -2,21 +2,25 @@ import styled from "@emotion/styled";
 import { color, font } from "../../GlobalStyles";
 
 const HeaderStyles = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: ${color.bgNormal};
   & nav {
-    background: transparent !important;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 40px;
     & a {
       color: ${color.fontNormal};
+      font-weight: bold;
+      font-size: 15px;
     }
-    & .navbar-toggler {
-      background: #fff;
-    }
-    & .navbar-nav {
-      flex-direction: row;
-    }
-
-    & .sb-avatar {
-      margin-left: 15px;
+    & .menu-group {
+      display: flex;
+      & > a:not(:last-child) {
+        padding: 0 10px;
+      }
     }
   }
 `;

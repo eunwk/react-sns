@@ -1,8 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import Head from "next/head";
 import { useSelector, useDispatch } from "react-redux";
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
+import Router from "next/router";
 import { Form, Input, Checkbox, Button } from "antd";
 import Link from "next/link";
 import MainPageLayout from "../components/pageLayouts/MainPageLayout";
@@ -12,7 +11,7 @@ import { SIGN_UP_REQUEST } from "../reducers/user";
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const { signUpLoading } = useSelector((state) => state.user);
+  const { signUpLoading, signUpDone } = useSelector((state) => state.user);
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
   const [nickname, onChangeNickname] = useInput("");
@@ -20,6 +19,12 @@ const SignUp = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [term, setTerm] = useState("");
   const [termError, setTermError] = useState(false);
+
+  useEffect(() => {
+    if (signUpDone) {
+      Router.replace("/signup-suceess");
+    }
+  }, [signUpDone]);
 
   const onChangePasswordCheck = useCallback(
     (e) => {
