@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 export const color = {
   bgNormal: "#000000",
@@ -36,6 +37,7 @@ const GlobalStyles = css`
   body {
     background-color: ${color.bgNormal};
     color: ${color.fontNormal};
+    text-algin: left;
   }
   a {
     color: ${color.fontNormal};
@@ -50,11 +52,59 @@ const GlobalStyles = css`
     max-width: 1200px;
     padding: 0 15px 20px;
     margin: 0 auto;
-    border: 1px solid red;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    & footer {
+      margin-top: auto;
+    }
   }
 
   .ant-form {
     color: ${color.fontNormal};
+  }
+
+  // 부트스트랩 디자인 커스터마이징
+  .form-control,
+  .btn {
+    border-radius: 2px;
+  }
+`;
+
+export const LoginFormStyles = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px 0;
+  & h1 {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  & form button[type="submit"] {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+`;
+
+export const TextLinkGroupStyles = styled.div`
+  & a {
+    padding: 0px 10px;
+    display: inline-block;
+    position: relative;
+    &:first-child {
+      padding-left: 0;
+    }
+    &::after {
+      content: "";
+      width: 1px;
+      height: 50%;
+      position: absolute;
+      top: 25%;
+      right: 0px;
+      background: #eee;
+    }
+    &:last-child::after {
+      content: none;
+    }
   }
 `;
 

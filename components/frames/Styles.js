@@ -26,7 +26,7 @@ const HeaderStyles = styled.header`
 `;
 
 export const FooterStyles = styled.footer`
-  background: #222;
+  border-top: 1px solid #222;
   text-align: center;
   padding: 20px 15px;
 `;

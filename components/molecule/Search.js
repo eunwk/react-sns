@@ -4,7 +4,7 @@ import Link from "next/link";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import Tag from "../../atoms/Tag";
+import Tag from "../atoms/Tag";
 import Styles from "./Styles";
 
 const tags = ["수중랜턴", "해루질", "진진이", "문어"];

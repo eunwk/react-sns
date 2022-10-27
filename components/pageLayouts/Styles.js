@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 export const MainPageLayoutStyles = styled.div`
   & {
-    border: 1px solid red;
     padding-top: 20px;
+    flex: 1 1 auto;
   }
 `;
 

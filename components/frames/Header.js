@@ -36,9 +36,7 @@ const Header = () => {
             </Link>
           </ListGroup.Item>
           <ListGroup.Item>
-            <Button onClick={onClickLogout} loading={logOutLoading}>
-              로그아웃
-            </Button>
+            <Button onClick={onClickLogout}>로그아웃</Button>
           </ListGroup.Item>
         </ListGroup>
       </Popover.Body>
