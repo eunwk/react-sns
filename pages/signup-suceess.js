@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 
 import MainPageLayout from "../components/pageLayouts/MainPageLayout";
+import MessageBox from "../components/molecule/MessageBox";
 
 const SignUpSuccess = () => {
   return (
@@ -11,10 +12,15 @@ const SignUpSuccess = () => {
       <Head>
         <title>회원가입완료 | 커뮤니티 이름</title>
       </Head>
-      <h1>회원가입완료</h1>
-      <Link href="/login">
-        <a>로그인</a>
-      </Link>
+      <MessageBox
+        title="회원가입완료"
+        description="가입해주셔서 감사합니다."
+        buttons={
+          <Link href="/" className="btn">
+            <a>홈으로</a>
+          </Link>
+        }
+      />
     </MainPageLayout>
   );
 };

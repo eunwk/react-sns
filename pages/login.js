@@ -137,31 +137,6 @@ const Login = () => {
           </Link>
         </OtherLoginStyles>
       </LoginFormStyles>
-
-      {/* <Form onSubmit={onSubmitForm}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>이메일</Form.Label>
-          <Form.Control type="email" value={email} placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>비밀번호</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            value={password}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="아이디 저장" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          로그인
-        </Button>
-      </Form> */}
     </MainPageLayout>
   );
 };
