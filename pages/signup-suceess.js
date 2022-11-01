@@ -16,8 +16,8 @@ const SignUpSuccess = () => {
         title="회원가입완료"
         description="가입해주셔서 감사합니다."
         buttons={
-          <Link href="/" className="btn">
-            <a>홈으로</a>
+          <Link href="/">
+            <a className="btn btn-primary">홈으로</a>
           </Link>
         }
       />

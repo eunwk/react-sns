@@ -10,8 +10,9 @@ export const color = {
 };
 
 export const font = {
-  sizeNormal: "14px",
-  sizeSmall: "12px",
+  sizeNormal: "16px",
+  sizeSmall: "14px",
+  sizeXSmall: "12px",
   sizelarge: "18px",
 };
 
@@ -38,6 +39,7 @@ const GlobalStyles = css`
     background-color: ${color.bgNormal};
     color: ${color.fontNormal};
     text-algin: left;
+    font-size: 16px;
   }
   a {
     color: ${color.fontNormal};

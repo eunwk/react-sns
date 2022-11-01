@@ -3,18 +3,32 @@ import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 
 import { MessageBoxStyles } from "./Styles";
-import { AiFillCarryOut } from "react-icons/ai";
+import {
+  AiOutlineCloseCircle,
+  AiOutlineCheckCircle,
+  AiOutlineReconciliation,
+} from "react-icons/ai";
 const MessageBox = ({ title, description, type, buttons }) => {
   console.log("buttons, ", buttons);
 
+  const typeImg = (type) => {
+    switch (type) {
+      case "information":
+        return <AiOutlineCheckCircle className="msg-img" />;
+      case "error":
+        return <AiOutlineCloseCircle className="msg-img" />;
+      default:
+        return <AiOutlineReconciliation className="msg-img" />;
+    }
+  };
+
   return (
     <MessageBoxStyles>
-      <AiFillCarryOut />
-      {type}
+      {typeImg(type)}
       {/* <img src={} alt={type}/> */}
-      <p className="title">{title}</p>
+      <h1 className="title">{title}</h1>
       <p className="description">{description}</p>
-      {buttons && buttons}
+      {buttons && <div class="btn-area">{buttons}</div>}
     </MessageBoxStyles>
   );
 };
