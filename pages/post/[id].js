@@ -1,18 +1,24 @@
-// 특정 사용자의 게시글 목록 (index 페이지와 거의 동일)
-import React, { useEffect } from "react";
-import CommentForm from "../../components/organism/CommentForm/Index";
-// import Head from 'next/head';
-// import Link from 'next/link';
-// import Tab from 'react-bootstrap/Tab';
-// import Tabs from 'react-bootstrap/Tabs';
-import SubPageLayout from "../../components/pageLayouts/SubPageLayout";
+import React, { useCallback, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import MainPageLayout from "../../components/pageLayouts/MainPageLayout";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { faker } from "@faker-js/faker";
 
 const Post = () => {
+  const onSubmit = (e) => {
+    e.prevetDefault();
+    console.log("onSubmit");
+  };
   return (
-    <SubPageLayout>
-      <div>포스트 상세</div>
-      <CommentForm />
-    </SubPageLayout>
+    <MainPageLayout>
+      <h1>글제목</h1>
+      <div>{faker.lorem.paragraph(100)}</div>
+      <div className="btn-area">
+        <Button variant="secondary">목록</Button>
+        <Button variant="primary">수정</Button>
+      </div>
+    </MainPageLayout>
   );
 };
 

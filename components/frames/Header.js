@@ -50,6 +50,9 @@ const Header = () => {
           <a>Eunwk SNS</a>
         </Link>
         <div className="menu-group">
+          <Link href="/post/write">
+            <a>글쓰기</a>
+          </Link>
           <Link href="/post/1">
             <a>게시글상세</a>
           </Link>

@@ -52,7 +52,8 @@ export const generateDummyPost = (number) =>
         id: shortId.generate(),
         nickname: faker.name.fullName(),
       },
-      content: faker.lorem.paragraph(),
+      title: faker.lorem.sentence(3),
+      content: faker.lorem.paragraph(2),
       Images: [
         {
           src: faker.image.image(),

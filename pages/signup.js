@@ -117,7 +117,6 @@ const SignUp = () => {
               <div style={{ color: "red" }}>비밀번호가 일치하지 않습니다.</div>
             )}
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="user-term">
             <Form.Check
               type="checkbox"

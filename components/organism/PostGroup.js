@@ -6,15 +6,15 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import Tag from "../../atoms/Tag";
+import Tag from "../atoms/Tag";
 import Card from "react-bootstrap/Card";
-import Styles from "./Styles";
-import Search from "../../molecule/Search";
+import { PostGroupStyles } from "./Styles";
+import Search from "../molecule/Search";
 
 const PostGroup = ({ title, posts, shwoCategory, showSearch }) => {
   // console.log("posts", posts);
   return (
-    <Styles>
+    <PostGroupStyles>
       <div className="tit-area">
         <h1>{title}</h1>
         {shwoCategory && (
@@ -35,16 +35,25 @@ const PostGroup = ({ title, posts, shwoCategory, showSearch }) => {
       <div className="list-area">
         {posts.map((v) => (
           <Card key={v.id}>
-            <Card.Img variant="top" src={v.Images[0].src} />
-            <Card.Body>
-              <Card.Title>{v.title}</Card.Title>
-              <Card.Text>{v.content}</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
+            <Link href="/post/1">
+              <a>
+                <div className="img-container">
+                  <Card.Img variant="top" src={v.Images[0].src} />
+                </div>
+                <Card.Body>
+                  <Card.Title>{v.title}</Card.Title>
+                  <Card.Text>{v.content}</Card.Text>
+                  <div className="extra-info">
+                    <div>2일전 Created By 영자</div>
+                    <div>좋아요 13 / 댓글 10</div>
+                  </div>
+                </Card.Body>
+              </a>
+            </Link>
           </Card>
         ))}
       </div>
-    </Styles>
+    </PostGroupStyles>
   );
 };
 

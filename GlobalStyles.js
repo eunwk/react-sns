@@ -71,6 +71,13 @@ const GlobalStyles = css`
   .btn {
     border-radius: 2px;
   }
+
+  .btn-area {
+    text-align: right;
+    & .btn:not(:first-child) {
+      margin-left: 5px;
+    }
+  }
 `;
 
 export const LoginFormStyles = styled.div`
